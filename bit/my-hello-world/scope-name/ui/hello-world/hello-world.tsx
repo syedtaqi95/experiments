@@ -1,5 +1,5 @@
 import React from 'react';
-import { getHelloWorld } from '@org/scope-name.get-hello-world';
+import { getHelloWorld } from '@syedtaqi95/personal.get-hello-world';
 
 export function HelloWorld() {
   return <div>{getHelloWorld()}</div>;

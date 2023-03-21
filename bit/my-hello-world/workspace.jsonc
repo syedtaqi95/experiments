@@ -27,7 +27,7 @@
     /**
      * default scope for all components in workspace.
      **/
-    "defaultScope": "org.scope-name"
+    "defaultScope": "syedtaqi95.personal"
   },
   /**
    * main configuration for component dependency resolution.
@@ -79,5 +79,5 @@
       // "teambit.react/react": { }
     }
   },
-  "org.scope-name/hello-world-app": {}
+  "syedtaqi95.personal/hello-world-app": {}
 }

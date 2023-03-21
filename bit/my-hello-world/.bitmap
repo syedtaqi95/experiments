@@ -10,83 +10,22 @@
 
 {
     "get-hello-world": {
-        "scope": "",
-        "version": "",
-        "defaultScope": "org.scope-name",
+        "scope": "syedtaqi95.personal",
+        "version": "0.0.1",
         "mainFile": "index.ts",
-        "rootDir": "scope-name/get-hello-world",
-        "config": {
-            "teambit.node/node@0.0.15": {},
-            "teambit.envs/envs": {
-                "env": "teambit.node/node"
-            },
-            "teambit.dependencies/dependency-resolver": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.preview/preview": {},
-            "teambit.component/dev-files": {},
-            "teambit.pipelines/builder": {},
-            "teambit.component/forking": {
-                "forkedFrom": {
-                    "scope": "learnbit.hello-world",
-                    "name": "get-hello-world",
-                    "version": "0.0.3"
-                }
-            }
-        }
+        "rootDir": "scope-name/get-hello-world"
     },
     "hello-world-app": {
-        "scope": "",
-        "version": "",
-        "defaultScope": "org.scope-name",
+        "scope": "syedtaqi95.personal",
+        "version": "0.0.1",
         "mainFile": "index.ts",
-        "rootDir": "scope-name/hello-world-app",
-        "config": {
-            "teambit.react/react-env@0.0.43": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
-            "teambit.dependencies/dependency-resolver": {},
-            "teambit.harmony/application": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.preview/preview": {},
-            "teambit.component/dev-files": {},
-            "teambit.pipelines/builder": {},
-            "teambit.component/forking": {
-                "forkedFrom": {
-                    "scope": "learnbit.hello-world",
-                    "name": "hello-world-app",
-                    "version": "0.0.3"
-                }
-            }
-        }
+        "rootDir": "scope-name/hello-world-app"
     },
     "ui/hello-world": {
-        "scope": "",
-        "version": "",
-        "defaultScope": "org.scope-name",
+        "scope": "syedtaqi95.personal",
+        "version": "0.0.1",
         "mainFile": "index.ts",
-        "rootDir": "scope-name/ui/hello-world",
-        "config": {
-            "teambit.react/react-env@0.0.43": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
-            "teambit.dependencies/dependency-resolver": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.preview/preview": {},
-            "teambit.component/dev-files": {},
-            "teambit.pipelines/builder": {},
-            "teambit.component/forking": {
-                "forkedFrom": {
-                    "scope": "learnbit.hello-world",
-                    "name": "ui/hello-world",
-                    "version": "0.0.3"
-                }
-            }
-        }
+        "rootDir": "scope-name/ui/hello-world"
     },
     "$schema-version": "15.0.0"
 }

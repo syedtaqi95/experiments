@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
  * Bit automatically adds it to the dependency graph of this component.
  * to learn more @see https://bit.dev/getting-started/composing/use-dependencies
  */
-import { HelloWorld } from '@org/scope-name.ui.hello-world';
+import { HelloWorld } from '@syedtaqi95/personal.ui.hello-world';
 
 /**
  * this is the component's implementation.
