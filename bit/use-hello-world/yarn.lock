@@ -182,17 +182,17 @@
   dependencies:
     tslib "^2.4.0"
 
-"@syedtaqi95/personal.get-hello-world@0.0.1":
-  version "0.0.1"
-  resolved "https://node.bit.cloud/@syedtaqi95/personal.get-hello-world/-/@syedtaqi95-personal.get-hello-world-0.0.1.tgz#fe170530e332ac78d23ab1e67c49295d37d80e81"
-  integrity sha1-/hcFMOMyrHjSOrHmfEkpXTfYDoE=
+"@syedtaqi95/personal.get-hello-world@0.0.2":
+  version "0.0.2"
+  resolved "https://node.bit.cloud/@syedtaqi95/personal.get-hello-world/-/@syedtaqi95-personal.get-hello-world-0.0.2.tgz#8158f12d05b9f4542b71a278b8f67b6c737e65fc"
+  integrity sha1-gVjxLQW59FQrcaJ4uPZ7bHN+Zfw=
 
-"@syedtaqi95/personal.ui.hello-world@^0.0.1":
-  version "0.0.1"
-  resolved "https://node.bit.cloud/@syedtaqi95/personal.ui.hello-world/-/@syedtaqi95-personal.ui.hello-world-0.0.1.tgz#0cfd42854d6db08308941ae5be933972b47ac9d4"
-  integrity sha1-DP1ChU1tsIMIlBrlvpM5crR6ydQ=
+"@syedtaqi95/personal.ui.hello-world@^0.0.2":
+  version "0.0.2"
+  resolved "https://node.bit.cloud/@syedtaqi95/personal.ui.hello-world/-/@syedtaqi95-personal.ui.hello-world-0.0.2.tgz#e418cc540b1310a2813fdbfceb881d6f22e07f2d"
+  integrity sha1-5BjMVAsTEKKBP9v864gdbyLgfy0=
   dependencies:
-    "@syedtaqi95/personal.get-hello-world" "0.0.1"
+    "@syedtaqi95/personal.get-hello-world" "0.0.2"
 
 "@types/json5@^0.0.29":
   version "0.0.29"
