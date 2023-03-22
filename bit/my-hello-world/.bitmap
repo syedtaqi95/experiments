@@ -11,19 +11,19 @@
 {
     "get-hello-world": {
         "scope": "syedtaqi95.personal",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "scope-name/get-hello-world"
     },
     "hello-world-app": {
         "scope": "syedtaqi95.personal",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "scope-name/hello-world-app"
     },
     "ui/hello-world": {
         "scope": "syedtaqi95.personal",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "scope-name/ui/hello-world"
     },
