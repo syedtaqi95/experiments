@@ -1,7 +1,7 @@
 {
-  "name": "learnstorybook-design-system-template",
+  "name": "@syedtaqi95/learnstorybook-design-system",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env BABEL_ENV=production babel src -d dist",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
@@ -41,7 +41,16 @@
       }
     ]
   },
-  "babel": {},
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "absoluteRuntime": false
+        }
+      ]
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -55,6 +64,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.21.0",
     "@babel/preset-typescript": "^7.18.6",
     "@storybook/addon-a11y": "^6.5.16",
     "@storybook/addon-actions": "^6.5.16",
@@ -69,10 +79,17 @@
     "@storybook/react": "^6.5.16",
     "@storybook/test-runner": "^0.9.4",
     "@storybook/testing-library": "^0.0.13",
+    "auto": "^10.43.0",
     "chromatic": "^6.17.2",
+    "cross-env": "^7.0.3",
     "jest": "27",
     "prettier": "^2.8.6"
   },
   "readme": "ERROR: No README data found!",
-  "_id": "learnstorybook-design-system-template@0.1.0"
+  "_id": "learnstorybook-design-system-template@0.1.0",
+  "description": "Storybook design systems tutorial",
+  "main": "dist/index.js",
+  "repository": "https://github.com/syedtaqi95/experiments.git",
+  "author": "syedtaqi95 syed.taqi95@gmail.com",
+  "license": "MIT"
 }
