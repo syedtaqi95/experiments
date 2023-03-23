@@ -21,7 +21,8 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
-    "chromatic": "npx chromatic --project-token=1165dedbe144"
+    "chromatic": "npx chromatic --project-token=1165dedbe144",
+    "test-storybook": "test-storybook"
   },
   "eslintConfig": {
     "extends": [
@@ -54,17 +55,21 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
+    "@storybook/addon-a11y": "^6.5.16",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",
     "@storybook/addon-links": "^6.5.16",
     "@storybook/builder-webpack4": "^6.5.16",
+    "@storybook/jest": "^0.0.10",
     "@storybook/manager-webpack4": "^6.5.16",
     "@storybook/node-logger": "^6.5.16",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.5.16",
+    "@storybook/test-runner": "^0.9.4",
     "@storybook/testing-library": "^0.0.13",
     "chromatic": "^6.17.2",
+    "jest": "27",
     "prettier": "^2.8.6"
   },
   "readme": "ERROR: No README data found!",

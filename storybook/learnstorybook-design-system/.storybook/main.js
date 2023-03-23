@@ -6,6 +6,10 @@ module.exports = {
     "@storybook/addon-interactions",
     "@storybook/preset-create-react-app",
     "@storybook/addon-actions",
+    "@storybook/addon-a11y",
   ],
   framework: "@storybook/react",
+  features: {
+    interactionsDebugger: true,
+  },
 };
