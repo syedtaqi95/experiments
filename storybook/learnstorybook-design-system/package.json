@@ -22,7 +22,8 @@
     "build-storybook": "build-storybook -s public",
     "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "chromatic": "npx chromatic --project-token=1165dedbe144",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "build-storybook-docs": "build-storybook --docs"
   },
   "eslintConfig": {
     "extends": [
