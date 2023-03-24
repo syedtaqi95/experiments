@@ -7,7 +7,6 @@ export default {
   title: "components/UserList",
 };
 
-
 const Template = (args) => <UserList {...args} />;
 
 export const Simple = Template.bind({});
