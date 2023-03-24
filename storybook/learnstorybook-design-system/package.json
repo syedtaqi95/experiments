@@ -23,7 +23,8 @@
     "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "chromatic": "npx chromatic --project-token=1165dedbe144",
     "test-storybook": "test-storybook",
-    "build-storybook-docs": "build-storybook --docs"
+    "build-storybook-docs": "build-storybook --docs",
+    "release": "auto shipit --base-branch=main"
   },
   "eslintConfig": {
     "extends": [
