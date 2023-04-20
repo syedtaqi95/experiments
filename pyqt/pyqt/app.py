@@ -1,25 +1,36 @@
 # Only needed for access to command line arguments
 import sys
+from typing import Type
 
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QApplication, QLabel, QMainWindow, QMenu
+from PyQt6.QtWidgets import (
+    QMainWindow,
+    QApplication,
+    QLabel,
+    QCheckBox,
+    QComboBox,
+    QListWidget,
+    QLineEdit,
+    QLineEdit,
+    QSpinBox,
+    QDoubleSpinBox,
+    QSlider,
+)
+from PyQt6.QtGui import QPixmap
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
-        super().__init__()
-        self.show()
+        super(MainWindow, self).__init__()
 
-        self.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
-        self.customContextMenuRequested.connect(self.on_context_menu)
+        self.setWindowTitle("Widgets App")
 
-    def on_context_menu(self, pos) -> None:
-        context = QMenu(self)
-        context.addAction(QAction("test 1", self))
-        context.addAction(QAction("test 2", self))
-        context.addAction(QAction("test 3", self))
-        context.exec(self.mapToGlobal(pos))
+        widget = QLabel()
+        widget.setPixmap(QPixmap("test-image.png"))
+        widget.setScaledContents(True)
+        widget.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.setCentralWidget(widget)
 
 
 def main():
