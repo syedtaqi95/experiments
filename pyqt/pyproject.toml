@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pyqt"
+version = "0.1.0"
+description = "PyQt6 demo application"
+authors = ["syedtaqi95 <sh13226@my.bristol.ac.uk>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyqt6 = "^6.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
