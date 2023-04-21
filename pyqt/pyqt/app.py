@@ -1,6 +1,14 @@
 # Only needed for access to command line arguments
 import sys
-from PyQt6.QtWidgets import QMainWindow, QApplication, QWidget, QStackedLayout
+from PyQt6.QtWidgets import (
+    QMainWindow,
+    QApplication,
+    QWidget,
+    QStackedLayout,
+    QVBoxLayout,
+    QHBoxLayout,
+    QPushButton,
+)
 from PyQt6.QtGui import QPalette, QColor
 from PyQt6.QtCore import Qt
 
@@ -22,17 +30,40 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("My App")
 
-        layout = QStackedLayout()
-        layout.addWidget(Color("red"))
-        layout.addWidget(Color("green"))
-        layout.addWidget(Color("blue"))
-        layout.addWidget(Color("yellow"))
+        pageLayout = QVBoxLayout()
+        buttonLayout = QHBoxLayout()
+        self.stackLayout = QStackedLayout()
 
-        layout.setCurrentIndex(2)
+        pageLayout.addLayout(buttonLayout)
+        pageLayout.addLayout(self.stackLayout)
+
+        btn = QPushButton("red")
+        btn.pressed.connect(self.activate_tab_1)
+        buttonLayout.addWidget(btn)
+        self.stackLayout.addWidget(Color("red"))
+
+        btn = QPushButton("green")
+        btn.pressed.connect(self.activate_tab_2)
+        buttonLayout.addWidget(btn)
+        self.stackLayout.addWidget(Color("green"))
+
+        btn = QPushButton("blue")
+        btn.pressed.connect(self.activate_tab_3)
+        buttonLayout.addWidget(btn)
+        self.stackLayout.addWidget(Color("blue"))
 
         widget = QWidget()
-        widget.setLayout(layout)
+        widget.setLayout(pageLayout)
         self.setCentralWidget(widget)
+
+    def activate_tab_1(self):
+        self.stackLayout.setCurrentIndex(0)
+
+    def activate_tab_2(self):
+        self.stackLayout.setCurrentIndex(1)
+
+    def activate_tab_3(self):
+        self.stackLayout.setCurrentIndex(2)
 
 
 def main():
