@@ -1,6 +1,6 @@
 # Only needed for access to command line arguments
 import sys
-from PyQt6.QtWidgets import QMainWindow, QApplication, QWidget, QHBoxLayout, QVBoxLayout
+from PyQt6.QtWidgets import QMainWindow, QApplication, QWidget, QStackedLayout
 from PyQt6.QtGui import QPalette, QColor
 from PyQt6.QtCore import Qt
 
@@ -22,26 +22,16 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("My App")
 
-        layout1 = QHBoxLayout()
-        layout2 = QVBoxLayout()
-        layout3 = QVBoxLayout()
+        layout = QStackedLayout()
+        layout.addWidget(Color("red"))
+        layout.addWidget(Color("green"))
+        layout.addWidget(Color("blue"))
+        layout.addWidget(Color("yellow"))
 
-        layout2.addWidget(Color("red"))
-        layout2.addWidget(Color("yellow"))
-        layout2.addWidget(Color("purple"))
-        layout1.addLayout(layout2)
-        
-        layout1.addWidget(Color("green"))
-
-        layout3.addWidget(Color("red"))
-        layout3.addWidget(Color("purple"))
-        layout1.addLayout(layout3)
-
-        layout1.setContentsMargins(0, 0, 0, 0)
-        layout1.setSpacing(20)
+        layout.setCurrentIndex(2)
 
         widget = QWidget()
-        widget.setLayout(layout1)
+        widget.setLayout(layout)
         self.setCentralWidget(widget)
 
 
