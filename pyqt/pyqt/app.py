@@ -1,5 +1,5 @@
 # Only needed for access to command line arguments
-import sys
+import sys, os
 from typing import Type
 
 from PyQt6.QtCore import Qt
@@ -26,7 +26,13 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Widgets App")
 
         widget = QLabel()
-        widget.setPixmap(QPixmap("test-image.png"))
+        widget.setPixmap(
+            QPixmap(
+                os.path.join(
+                    "/", os.path.dirname(os.path.realpath(__file__)), "test-image.png"
+                )
+            )
+        )
         widget.setScaledContents(True)
         widget.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
