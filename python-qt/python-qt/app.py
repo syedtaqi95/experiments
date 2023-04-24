@@ -10,6 +10,7 @@ from PySide6.QtWidgets import (
     QPushButton,
     QVBoxLayout,
     QWidget,
+    QMessageBox,
 )
 from PySide6.QtCore import Slot
 
@@ -45,13 +46,12 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(button)
 
     def button_clicked(self, s: Type[Slot]):
-        print("click", s)
+        button = QMessageBox.question(self, "Question dialog", "The longer message")
 
-        dlg = CustomDialog(self)
-        if dlg.exec_():
-            print("Success")
+        if button == QMessageBox.StandardButton.Yes:
+            print("Yes!")
         else:
-            print("Cancel")
+            print("No!")
 
 
 def main():
