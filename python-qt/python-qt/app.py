@@ -1,72 +1,57 @@
 import sys
-from os import path
-from typing import Type
+from typing import Type, Optional
 
 from PySide6.QtWidgets import (
-    QMainWindow,
     QApplication,
+    QMainWindow,
     QLabel,
-    QToolBar,
-    QStatusBar,
-    QCheckBox,
+    QDialog,
+    QDialogButtonBox,
+    QPushButton,
+    QVBoxLayout,
+    QWidget,
 )
-from PySide6.QtGui import QAction, QIcon, QKeySequence
-from PySide6.QtCore import Qt, Slot, QSize
+from PySide6.QtCore import Slot
+
+
+class CustomDialog(QDialog):
+    def __init__(self, parent: Optional[QWidget] = None):
+        super().__init__(parent)
+        self.setWindowTitle("My Dialog")
+
+        Qbtn = (
+            QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
+        )
+
+        self.buttonBox = QDialogButtonBox(Qbtn)
+        self.buttonBox.accepted.connect(self.accept)
+        self.buttonBox.rejected.connect(self.reject)
+
+        self.layout = QVBoxLayout()  # type: ignore
+        message = QLabel("Something happened, is that OK?")
+        self.layout.addWidget(message)
+        self.layout.addWidget(self.buttonBox)
+        self.setLayout(self.layout)
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super().__init__()
 
         self.setWindowTitle("My App")
 
-        label = QLabel("Hello")
-        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        button = QPushButton("Press me for a dialog!")
+        button.clicked.connect(self.button_clicked)
+        self.setCentralWidget(button)
 
-        self.setCentralWidget(label)
+    def button_clicked(self, s: Type[Slot]):
+        print("click", s)
 
-        toolbar = QToolBar("Main toolbar")
-        toolbar.setIconSize(QSize(16, 16))
-        self.addToolBar(toolbar)
-
-        currentDirectory = path.dirname(path.realpath(__file__))
-
-        buttonAction = QAction(
-            QIcon(path.join("/", currentDirectory, "bug.png")), "&The Button", self
-        )
-        buttonAction.setStatusTip("This is The Button")
-        buttonAction.triggered.connect(self.onToolbarButtonClick)
-        buttonAction.setCheckable(True)
-        buttonAction.setShortcut(QKeySequence("Ctrl+p"))
-        toolbar.addAction(buttonAction)
-
-        toolbar.addSeparator()
-
-        buttonAction2 = QAction(
-            QIcon(path.join("/", currentDirectory, "bug.png")), "&Button 2", self
-        )
-        buttonAction2.setStatusTip("This is Button 2")
-        buttonAction2.triggered.connect(self.onToolbarButtonClick)
-        buttonAction2.setCheckable(True)
-        toolbar.addAction(buttonAction2)
-
-        toolbar.addWidget(QLabel("The Label"))
-        toolbar.addWidget(QCheckBox())
-
-        self.setStatusBar(QStatusBar(self))
-
-        menu = self.menuBar()
-
-        fileMenu = menu.addMenu("&File")
-        fileMenu.addAction(buttonAction)
-
-        fileMenu.addSeparator()
-
-        fileSubMenu = fileMenu.addMenu("Submenu")
-        fileSubMenu.addAction(buttonAction2)
-
-    def onToolbarButtonClick(self, s: Type[Slot]):
-        print(f"click {s}")
+        dlg = CustomDialog(self)
+        if dlg.exec_():
+            print("Success")
+        else:
+            print("Cancel")
 
 
 def main():
