@@ -2,8 +2,15 @@ import sys
 from os import path
 from typing import Type
 
-from PySide6.QtWidgets import QMainWindow, QApplication, QLabel, QToolBar, QStatusBar, QCheckBox
-from PySide6.QtGui import QAction, QIcon
+from PySide6.QtWidgets import (
+    QMainWindow,
+    QApplication,
+    QLabel,
+    QToolBar,
+    QStatusBar,
+    QCheckBox,
+)
+from PySide6.QtGui import QAction, QIcon, QKeySequence
 from PySide6.QtCore import Qt, Slot, QSize
 
 
@@ -25,17 +32,18 @@ class MainWindow(QMainWindow):
         currentDirectory = path.dirname(path.realpath(__file__))
 
         buttonAction = QAction(
-            QIcon(path.join("/", currentDirectory, "bug.png")), "The Button", self
+            QIcon(path.join("/", currentDirectory, "bug.png")), "&The Button", self
         )
         buttonAction.setStatusTip("This is The Button")
         buttonAction.triggered.connect(self.onToolbarButtonClick)
         buttonAction.setCheckable(True)
+        buttonAction.setShortcut(QKeySequence("Ctrl+p"))
         toolbar.addAction(buttonAction)
 
         toolbar.addSeparator()
 
         buttonAction2 = QAction(
-            QIcon(path.join("/", currentDirectory, "bug.png")), "Button 2", self
+            QIcon(path.join("/", currentDirectory, "bug.png")), "&Button 2", self
         )
         buttonAction2.setStatusTip("This is Button 2")
         buttonAction2.triggered.connect(self.onToolbarButtonClick)
@@ -46,6 +54,16 @@ class MainWindow(QMainWindow):
         toolbar.addWidget(QCheckBox())
 
         self.setStatusBar(QStatusBar(self))
+
+        menu = self.menuBar()
+
+        fileMenu = menu.addMenu("&File")
+        fileMenu.addAction(buttonAction)
+
+        fileMenu.addSeparator()
+
+        fileSubMenu = fileMenu.addMenu("Submenu")
+        fileSubMenu.addAction(buttonAction2)
 
     def onToolbarButtonClick(self, s: Type[Slot]):
         print(f"click {s}")
