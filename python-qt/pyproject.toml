@@ -1,17 +1,18 @@
 [tool.poetry]
-name = "python-qt"
+name = "python_qt"
 version = "0.1.0"
 description = "Python Qt demo application"
 authors = ["syedtaqi95 <sh13226@my.bristol.ac.uk>"]
 readme = "README.md"
-packages = [{ include = "python-qt" }]
+packages = [{ include = "python_qt" }]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
 pyside6 = "^6.5.0"
+pyinstaller = "^5.10.1"
 
 [tool.poetry.scripts]
-app = "python-qt.app:main"
+app = "python_qt.app:main"
 
 [build-system]
 requires = ["poetry-core"]
