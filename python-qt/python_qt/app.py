@@ -17,7 +17,7 @@ class MainWindow(QtWidgets.QMainWindow):
 def main():
     app = QtWidgets.QApplication(sys.argv)
     w = MainWindow()
-    app.exec_()
+    app.exec()
 
 
 if __name__ == "__main__":

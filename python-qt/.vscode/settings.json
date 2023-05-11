@@ -1,0 +1,27 @@
+{
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.python",
+        "editor.tabSize": 4
+    },
+    "python.formatting.provider": "black",
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportGeneralTypeIssues": "error",
+        "reportUnknownParameterType": "warning",
+        "reportUnknownArgumentType": "warning",
+        "reportUnknownLambdaType": "warning",
+        "reportUnknownVariableType": "warning",
+        "reportUnknownMemberType": "warning",
+        "reportMissingTypeArgument": "warning",
+        "reportInvalidTypeVarUse": "warning",
+        "reportUnusedImport": "warning",
+        "reportUnusedClass": "warning",
+        "reportUnusedFunction": "warning",
+        "reportUnusedVariable": "warning"
+    }
+}
