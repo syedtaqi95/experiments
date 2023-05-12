@@ -1,3 +1,5 @@
+import time
+import traceback
 from typing import Any, Callable
 from PySide6.QtWidgets import (
     QVBoxLayout,
@@ -7,9 +9,42 @@ from PySide6.QtWidgets import (
     QMainWindow,
     QApplication,
 )
-from PySide6.QtCore import QTimer, QRunnable, Slot, QThreadPool
-
+from PySide6.QtCore import (
+    QTimer,
+    QRunnable,
+    Signal,
+    Slot,
+    QThreadPool,
+    QObject,
+    SignalInstance,
+)
 import sys
+
+
+class WorkerSignals(QObject):
+    """
+    Defines the signals available from a running worker thread.
+
+    Supported signals are:
+
+    finished
+        No data
+
+    error
+        tuple (exctype, value, traceback.format_exc() )
+
+    result
+        object data returned from processing, anything
+
+    progress
+        int indicating % progress
+
+    """
+
+    finished = Signal()  # QtCore.Signal
+    error = Signal(tuple)
+    result = Signal(object)
+    progress = Signal(int)
 
 
 class Worker(QRunnable):
@@ -26,29 +61,38 @@ class Worker(QRunnable):
 
     """
 
-    def __init__(self, fn: Callable[..., Any], *args: int, **kwargs: int):
+    def __init__(self, fn: Callable[..., Any], *args: int, **kwargs: SignalInstance):
         super(Worker, self).__init__()
         # Store constructor arguments (re-used for processing)
         self.fn = fn
         self.args = args
         self.kwargs = kwargs
+        self.signals = WorkerSignals()
+
+        # Add the callback to our kwargs
+        self.kwargs["progress_callback"] = self.signals.progress
 
     @Slot()  # QtCore.Slot
     def run(self):
         """
         Initialise the runner function with passed args, kwargs.
         """
-        self.fn(*self.args, **self.kwargs)
+        # Retrieve args/kwargs here; and fire processing using them
+        try:
+            result = self.fn(*self.args, **self.kwargs)
+        except:
+            traceback.print_exc()
+            exctype, value = sys.exc_info()[:2]
+            self.signals.error.emit((exctype, value, traceback.format_exc()))
+        else:
+            self.signals.result.emit(result)
+        finally:
+            self.signals.finished.emit()
 
 
 class MainWindow(QMainWindow):
-    def __init__(self):
-        super(MainWindow, self).__init__()
-
-        self.threadpool = QThreadPool()
-        print(
-            "Multithreading with maximum %d threads" % self.threadpool.maxThreadCount()
-        )
+    def __init__(self, *args: Any, **kwargs: Any):
+        super(MainWindow, self).__init__(*args, **kwargs)
 
         self.counter = 0
 
@@ -68,16 +112,41 @@ class MainWindow(QMainWindow):
 
         self.show()
 
+        self.threadpool = QThreadPool()
+        print(
+            "Multithreading with maximum %d threads" % self.threadpool.maxThreadCount()
+        )
+
         self.timer = QTimer()
         self.timer.setInterval(1000)
         self.timer.timeout.connect(self.recurring_timer)
         self.timer.start()
 
-    def execute_this_fn(self):
-        print("Hello")
+    def progress_fn(self, n: object):
+        print("%d%% done" % n)
+
+    def execute_this_fn(self, progress_callback: SignalInstance):
+        for n in range(0, 5):
+            time.sleep(1)
+            progress_callback.emit(n * 100 / 4)
+        return "Done"
+
+    def print_output(self, s: object):
+        print(s)
+
+    def thread_complete(self):
+        print("THREAD COMPLETE!")
 
     def oh_no(self):
-        worker = Worker(self.execute_this_fn)
+        # Pass the function to execute
+        worker = Worker(
+            self.execute_this_fn
+        )  # Any other args, kwargs are passed to the run function
+        worker.signals.result.connect(self.print_output)
+        worker.signals.finished.connect(self.thread_complete)
+        worker.signals.progress.connect(self.progress_fn)
+
+        # Execute
         self.threadpool.start(worker)
 
     def recurring_timer(self):
