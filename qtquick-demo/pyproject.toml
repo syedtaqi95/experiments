@@ -10,6 +10,46 @@ packages = [{ include = "qtquick_demo" }]
 python = ">=3.12,<3.13"
 pyside6 = "^6.6.0"
 
+[tool.poetry.scripts]
+app = "qtquick_demo.main:main"
+
+[tool.ruff]
+select = ["ALL"]
+ignore = [
+  # No need
+  "DJ",    # flake8-django
+  "UP009", # UTF-8 encoding declaration is unnecessary
+  # subprocess call with shell=True seems safe, but
+  # may be changed in the future; consider rewriting without shell
+  "S602",
+  "S607", # Starting a process with a partial executable path
+  "N802", # Function name {name} should be lowercase
+
+  # Should be enabled later when project is more mature
+  "D", # pydocstyle
+
+  # Should be enabled for releases
+  "ERA001", # eradicate (e.g. comments)
+  "T20",    # flake8-print
+
+  # PySide C APIs do not accept keyword arguments
+  "FBT003", # boolean-positional-value-in-function-call
+
+  # Using unittest for tests so needs to be disabled
+  "PT009", # pytest-unittest-assertion
+
+  # Qt signals emit booleans
+  "FBT001", # boolean-type-hint-positional-argument
+]
+line-length = 79
+exclude = ["**/__pycache__", "**/.*"]
+
+[tool.ruff.flake8-builtins]
+builtins-ignorelist = ["id"]
+
+[tool.black]
+line-length = 79
+
 [tool.pyright]
 "include" = ["qtquick_demo"]
 "exclude" = ["**/__pycache__", "**/.*"]
@@ -22,14 +62,14 @@ pyside6 = "^6.6.0"
 "reportUnknownArgumentType" = "warning"
 "reportUnknownVariableType" = "warning"
 "reportGeneralTypeIssues" = "warning"
-# "reportUnknownParameterType"= "warning"
-# "reportUnknownLambdaType"= "warning"
-# "reportMissingTypeArgument"= "warning"
-# "reportInvalidTypeVarUse"= "warning"
-# "reportUnusedImport"= "warning"
-# "reportUnusedClass"= "warning"
-# "reportUnusedFunction"= "warning"
-# "reportUnusedVariable"= "warning"
+"reportUnknownParameterType" = "warning"
+"reportUnknownLambdaType" = "warning"
+"reportMissingTypeArgument" = "warning"
+"reportInvalidTypeVarUse" = "warning"
+"reportUnusedImport" = "warning"
+"reportUnusedClass" = "warning"
+"reportUnusedFunction" = "warning"
+"reportUnusedVariable" = "warning"
 "pythonVersion" = "3.12"
 "pythonPlatform" = "Linux"
 
