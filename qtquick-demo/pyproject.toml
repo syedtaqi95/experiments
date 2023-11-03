@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "qtquick-demo"
+version = "0.1.0"
+description = ""
+authors = ["syedtaqi95 <sh13226@my.bristol.ac.uk>"]
+readme = "README.md"
+packages = [{ include = "qtquick_demo" }]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+pyside6 = "^6.6.0"
+
+[tool.pyright]
+"include" = ["qtquick_demo"]
+"exclude" = ["**/__pycache__", "**/.*"]
+"useLibraryCodeForTypes" = true
+"typeCheckingMode" = "strict"
+# "typeshedPath" = "../../external/typeshed"
+# "stubPath" = "../../external/typeshed/custom_stubs"
+"reportMissingTypeStubs" = "warning"
+"reportUnknownMemberType" = "warning"
+"reportUnknownArgumentType" = "warning"
+"reportUnknownVariableType" = "warning"
+"reportGeneralTypeIssues" = "warning"
+# "reportUnknownParameterType"= "warning"
+# "reportUnknownLambdaType"= "warning"
+# "reportMissingTypeArgument"= "warning"
+# "reportInvalidTypeVarUse"= "warning"
+# "reportUnusedImport"= "warning"
+# "reportUnusedClass"= "warning"
+# "reportUnusedFunction"= "warning"
+# "reportUnusedVariable"= "warning"
+"pythonVersion" = "3.12"
+"pythonPlatform" = "Linux"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
