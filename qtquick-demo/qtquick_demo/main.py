@@ -8,7 +8,7 @@ from PySide6.QtQml import QQmlApplicationEngine
 
 
 class Backend(QObject):
-    updated = Signal(str, arguments=["time"])
+    hms = Signal(int, int, int, arguments=["hours", "minutes", "seconds"])
 
     def __init__(self: Self) -> None:
         super().__init__()
@@ -21,8 +21,8 @@ class Backend(QObject):
 
     def updateTime(self: Self) -> None:
         # Pass the current time to QML
-        curr_time = strftime("%H:%M:%S", localtime())
-        self.updated.emit(curr_time)
+        local_time = localtime()
+        self.hms.emit(local_time.tm_hour, local_time.tm_min, local_time.tm_sec)
 
 
 def main() -> None:
