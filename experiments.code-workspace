@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "react-spectrum"
+		},
+		{
+			"path": "qtquick-demo"
+		},
+		{
+			"path": "python-qt"
+		},
+		{
+			"path": "ipc-bench"
+		},
+		{
+			"path": "node"
+		},
+		{
+			"path": "poetry-demo"
+		},
+		{
+			"path": "github-workflow-scripts"
+		},
+		{
+			"path": "electron"
+		},
+		{
+			"path": "storybook"
+		},
+		{
+			"path": "bit"
+		}
+	],
+  "settings": {}
+}
