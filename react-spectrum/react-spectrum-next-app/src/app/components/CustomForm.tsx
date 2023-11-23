@@ -6,7 +6,14 @@ import React from "react";
 const CustomForm = () => {
   return (
     <div>
-      <Button variant="accent">Save</Button>
+      <Button
+        variant="accent"
+        onPress={() => {
+          console.log("clicked");
+        }}
+      >
+        Save
+      </Button>
     </div>
   );
 };
