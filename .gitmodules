@@ -1,3 +1,4 @@
 [submodule "external/react-spectrum"]
 	path = external/react-spectrum
 	url = git@github.com:cambustion/external-react-spectrum.git
+  branch = main

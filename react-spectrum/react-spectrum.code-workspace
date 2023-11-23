@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "react-spectrum-next-app"
+		},
+		{
+			"path": "../external/react-spectrum"
+		}
+	],
+  "settings": {}
+}
