@@ -1,7 +1,5 @@
-"use client";
-
-import { Button } from "@adobe/react-spectrum";
 import Image from "next/image";
+import CustomForm from "./components/CustomForm";
 
 export default function Home() {
   return (
@@ -32,7 +30,7 @@ export default function Home() {
       </div>
 
       <div className="mb-32 text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:text-left">
-        <Button variant="accent">Save</Button>
+        <CustomForm />
       </div>
     </main>
   );
