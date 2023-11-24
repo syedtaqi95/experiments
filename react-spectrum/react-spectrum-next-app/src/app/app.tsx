@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 export const App = ({ children }: { children: ReactNode }) => {
   return (
     <Provider theme={defaultTheme} colorScheme="dark">
-      {children}
+      {children as any}
     </Provider>
   );
 };

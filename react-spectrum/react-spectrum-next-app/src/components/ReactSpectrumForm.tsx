@@ -13,8 +13,8 @@ const CustomForm = () => {
   };
 
   return (
-    <Form onSubmit={onSubmit} maxWidth="size-3000">
-      <TextField label="Name" value={name} onChange={setName} />
+    <Form validationBehavior="native" onSubmit={onSubmit} maxWidth="size-3000">
+      <TextField label="Name" value={name} onChange={setName} isRequired />
       <div>You entered: {name}</div>
       <ButtonGroup>
         <Button type="submit" variant="accent">
