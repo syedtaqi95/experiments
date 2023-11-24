@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: [
@@ -7,6 +8,13 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   // presets: [require("./src/spectrum-preset.js")],
-  // plugins: [require("tailwindcss-react-aria-components")],
+  plugins: [require("tailwindcss-react-aria-components")],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Ubuntu", ...defaultTheme.fontFamily.sans],
+      },
+    },
+  },
 };
 export default config;
