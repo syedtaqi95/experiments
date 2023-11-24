@@ -6,7 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  presets: [require("./src/spectrum-preset.js")],
-  plugins: [require("tailwindcss-react-aria-components")],
+  // presets: [require("./src/spectrum-preset.js")],
+  // plugins: [require("tailwindcss-react-aria-components")],
 };
 export default config;
