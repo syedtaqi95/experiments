@@ -12,6 +12,7 @@
     "@adobe/react-spectrum": "link:../../external/react-spectrum/packages/@adobe/react-spectrum",
     "next": "14.0.3",
     "react": "^18",
+    "react-aria-components": "1.0.0-rc.0",
     "react-dom": "^18",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-react-aria-components": "link:../../external/react-spectrum/packages/tailwindcss-react-aria-components"
