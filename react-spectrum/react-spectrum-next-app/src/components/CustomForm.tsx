@@ -8,6 +8,8 @@ const CustomForm = () => {
 
   const onSubmit: (event: React.FormEvent<HTMLFormElement>) => void = (e) => {
     e.preventDefault();
+
+    console.log(`name=${name}`);
   };
 
   return (

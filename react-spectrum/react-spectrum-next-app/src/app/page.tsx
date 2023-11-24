@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CustomForm from "./components/CustomForm";
+import CustomForm from "../components/CustomForm";
 
 export default function Home() {
   return (
