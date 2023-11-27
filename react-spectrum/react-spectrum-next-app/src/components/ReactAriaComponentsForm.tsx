@@ -1,14 +1,29 @@
 "use client";
 
+import { cn } from "@/utils/cn";
+import type { ComponentPropsWithRef, FC } from "react";
 import { useState } from "react";
 import {
-  Button,
+  Button as BaseButton,
   FieldError,
   Form,
   Input,
   Label,
   TextField,
 } from "react-aria-components";
+
+const Button: FC<ComponentPropsWithRef<typeof BaseButton>> = (props) => {
+  const { className, ...otherProps } = props;
+  return (
+    <BaseButton
+      {...otherProps}
+      className={cn(
+        "cursor-default rounded-2xl border-2 px-[14px] py-1 font-bold outline-none transition",
+        className,
+      )}
+    />
+  );
+};
 
 const CustomForm = () => {
   const [name, setName] = useState("");
@@ -70,14 +85,14 @@ const CustomForm = () => {
       <div className="mt-2 flex flex-row gap-4">
         <Button
           type="submit"
-          className="cursor-default rounded-2xl border-2 border-red-600 bg-red-600 px-[14px] py-1 font-bold transition hover:border-red-700 hover:bg-red-700"
+          className="border-red-600 bg-red-600 hover:border-red-700 hover:bg-red-700 pressed:border-red-800 pressed:bg-red-800"
         >
           Submit
         </Button>
 
         <Button
           type="reset"
-          className="cursor-default rounded-2xl border-2 border-neutral-600 bg-none px-[14px] py-1 font-bold transition hover:border-neutral-500 hover:bg-neutral-700"
+          className="border-neutral-600 bg-transparent  hover:border-neutral-500 hover:bg-neutral-700 pressed:border-neutral-400 pressed:bg-neutral-600"
         >
           Reset
         </Button>

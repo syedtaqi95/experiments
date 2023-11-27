@@ -1,5 +1,5 @@
-import ReactSpectrumForm from "../components/ReactSpectrumForm";
 import ReactAriaComponentsForm from "../components/ReactAriaComponentsForm";
+import ReactSpectrumForm from "../components/ReactSpectrumForm";
 
 export default function Home() {
   return (

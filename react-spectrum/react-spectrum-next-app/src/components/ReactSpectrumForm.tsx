@@ -1,6 +1,6 @@
 "use client";
 
-import { Form, TextField, ButtonGroup, Button } from "@adobe/react-spectrum";
+import { Button, ButtonGroup, Form, TextField } from "@adobe/react-spectrum";
 import { useState } from "react";
 
 const CustomForm = () => {
