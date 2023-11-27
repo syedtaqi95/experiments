@@ -8,7 +8,6 @@ const CustomForm = () => {
 
   const onSubmit: (event: React.FormEvent<HTMLFormElement>) => void = (e) => {
     e.preventDefault();
-
     console.log(`name=${name}`);
   };
 
@@ -20,7 +19,7 @@ const CustomForm = () => {
         <Button type="submit" variant="accent">
           Submit
         </Button>
-        <Button type="reset" variant="secondary" onPress={() => setName("")}>
+        <Button type="reset" variant="secondary">
           Reset
         </Button>
       </ButtonGroup>
