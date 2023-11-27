@@ -22,7 +22,6 @@ const CustomForm = () => {
   };
 
   const onInvalid: (event: React.FormEvent<HTMLFormElement>) => void = (e) => {
-    e.preventDefault();
     setInvalid(true);
   };
 
@@ -30,6 +29,10 @@ const CustomForm = () => {
     setName("");
     setInvalid(false);
   };
+
+  const inputBorder = isInvalid
+    ? "border-red-400 hover:border-red-300"
+    : "border-neutral-500 hover:border-neutral-400";
 
   return (
     <Form
@@ -46,10 +49,12 @@ const CustomForm = () => {
         className="gap mt-2 flex flex-col"
       >
         <Label className="pb-[5px] pt-[4px] text-xs text-neutral-300">
-          Custom-Name {isRequired && <span>*</span>}
+          Custom-Name {isRequired && "* "}
         </Label>
 
-        <Input className="w-full rounded border border-neutral-500 bg-black px-3 py-1 transition hover:border-neutral-400 focus:border-blue-500 focus:outline-none" />
+        <Input
+          className={`w-full rounded border bg-black px-3 py-1 transition  focus:border-blue-500 focus:outline-none ${inputBorder}`}
+        />
 
         <FieldError className="py-1 text-xs text-red-400" />
       </TextField>
