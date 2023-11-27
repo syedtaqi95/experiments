@@ -77,7 +77,7 @@ const CustomForm = () => {
 
         <Button
           type="reset"
-          className="rounded-2xl border-2 border-neutral-600 bg-none px-[14px] py-1 font-bold transition hover:border-neutral-500 hover:bg-neutral-700"
+          className="cursor-default rounded-2xl border-2 border-neutral-600 bg-none px-[14px] py-1 font-bold transition hover:border-neutral-500 hover:bg-neutral-700"
         >
           Reset
         </Button>
