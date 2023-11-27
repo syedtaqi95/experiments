@@ -30,6 +30,11 @@ const CustomForm = () => {
     setInvalid(false);
   };
 
+  const onChange: (value: string) => void = (value) => {
+    setName(value);
+    setInvalid(value ? false : true);
+  };
+
   const inputBorder = isInvalid
     ? "border-red-400 hover:border-red-300"
     : "border-neutral-500 hover:border-neutral-400";
@@ -43,8 +48,9 @@ const CustomForm = () => {
     >
       <TextField
         name="Name"
+        type="text"
         value={name}
-        onChange={setName}
+        onChange={onChange}
         isRequired={isRequired}
         className="gap mt-2 flex flex-col"
       >
@@ -64,7 +70,7 @@ const CustomForm = () => {
       <div className="mt-2 flex flex-row gap-4">
         <Button
           type="submit"
-          className="rounded-2xl border-2 border-red-600 bg-red-600 px-[14px] py-1 font-bold transition hover:border-red-700 hover:bg-red-700"
+          className="cursor-default rounded-2xl border-2 border-red-600 bg-red-600 px-[14px] py-1 font-bold transition hover:border-red-700 hover:bg-red-700"
         >
           Submit
         </Button>
