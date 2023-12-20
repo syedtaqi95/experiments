@@ -1,37 +1,52 @@
 {
 	"folders": [
     {
+      "name": "qtquick-demo",
       "path": "qtquick-demo"
     },
     {
+      "name": "python-qt",
       "path": "python-qt"
     },
     {
+      "name": "ipc-bench",
       "path": "ipc-bench"
     },
     {
+      "name": "node",
       "path": "node"
     },
     {
+      "name": "poetry-demo",
       "path": "poetry-demo"
     },
     {
+      "name": "github-workflow-scripts",
       "path": "github-workflow-scripts"
     },
     {
+      "name": "electron",
       "path": "electron"
     },
     {
+      "name": "storybook",
       "path": "storybook"
     },
     {
+      "name": "bit",
       "path": "bit"
     },
     {
+      "name": "react-spectrum-next-app",
       "path": "react-spectrum/react-spectrum-next-app"
     },
     {
+      "name": "react-spectrum",
       "path": "external/react-spectrum"
+    },
+    {
+      "name": "golang",
+      "path": "golang"
     }
   ],
   "settings": {}
