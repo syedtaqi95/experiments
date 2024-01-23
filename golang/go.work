@@ -3,6 +3,7 @@ go 1.21.5
 use (
 	./fuzz
 	./generics
+	./gowebexamples/hello-world
 	./greetings
 	./hello
 	./web-service-gin
