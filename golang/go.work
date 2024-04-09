@@ -1,10 +1,10 @@
 go 1.21.5
 
 use (
-	./fuzz
-	./generics
+	./tutorials/fuzz
+	./tutorials/generics
 	./gowebexamples/hello-world
-	./greetings
-	./hello
-	./web-service-gin
+	./tutorials/greetings
+	./tutorials/hello
+	./tutorials/web-service-gin
 )
