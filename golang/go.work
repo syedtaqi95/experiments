@@ -2,7 +2,6 @@ go 1.22.1
 
 use (
 	./gowebexamples/hello-world
-	./snippetbox
 	./tutorials/fuzz
 	./tutorials/generics
 	./tutorials/greetings
