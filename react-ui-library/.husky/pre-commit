@@ -1,0 +1,3 @@
+cd "react-ui-library"
+pnpm lint
+pnpm format
