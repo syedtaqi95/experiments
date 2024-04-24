@@ -1,4 +1,4 @@
-name: Generate tag version
+name: Generate tag version (react-ui-library)
 on:
   workflow_dispatch:
     inputs:
@@ -16,6 +16,9 @@ jobs:
   version:
     name: Create new version ${{ github.event.inputs.version }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./react-ui-library
     steps:
       - uses: actions/checkout@v3
         with:
