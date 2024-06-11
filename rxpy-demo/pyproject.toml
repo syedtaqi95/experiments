@@ -6,9 +6,82 @@ authors = ["syedtaqi95 <sh13226@my.bristol.ac.uk>"]
 readme = "README.md"
 packages = [{ include = "rxpy_demo" }]
 
+[tool.poetry.scripts]
+main = "rxpy_demo.main:main"
+
 [tool.poetry.dependencies]
 python = "^3.12"
+reactivex = "^4.0.4"
 
+[tool.ruff]
+select = ["ALL"]
+ignore = [
+  # No need
+  "DJ",    # flake8-django
+  "UP009", # UTF-8 encoding declaration is unnecessary
+  # subprocess call with shell=True seems safe, but
+  # may be changed in the future; consider rewriting without shell
+  "S602",
+  "S607", # Starting a process with a partial executable path
+  "N802", # Function name {name} should be lowercase
+
+  "S101", # assert - used in pytest tests
+  "S603", # subprocess-without-shell-equals-true
+  "S108", # hardcoded-temp-file
+
+  # Should be enabled later when project is more mature
+  "D", # pydocstyle
+
+  # Should be enabled for releases
+  "ERA001", # eradicate (e.g. comments)
+  "T20",    # flake8-print
+
+  # PySide C APIs do not accept keyword arguments
+  "FBT003", # boolean-positional-value-in-function-call
+
+  # Using unittest for tests so needs to be disabled
+  "PT009", # pytest-unittest-assertion
+
+  # Qt signals emit booleans
+  "FBT001", # boolean-type-hint-positional-argument
+
+  # Todo
+  "TD002", # Don't need author for todos
+  "TD003", # Don't need issue links for todos
+  "FIX002", # Don't need to list todos in linting
+
+  "DTZ005", # Useless tzinfo datetime thing
+]
+line-length = 79
+exclude = ["**/__pycache__", "**/.*"]
+
+[tool.ruff.flake8-builtins]
+builtins-ignorelist = ["id"]
+
+[tool.black]
+line-length = 79
+experimental-string-processing = true
+
+[tool.pyright]
+"include" = ["packages/noxbox-core", "packages/daq-py"]
+"exclude" = ["**/__pycache__", "**/.*"]
+"venvPath" = "."
+"venv" = ".venv"
+"useLibraryCodeForTypes" = true
+"typeCheckingMode" = "standard"
+# "reportMissingTypeStubs" = "warning"
+# "reportUnknownMemberType" = "warning"
+# "reportUnknownArgumentType" = "warning"
+# "reportUnknownVariableType" = "warning"
+# "reportGeneralTypeIssues" = "warning"
+# "reportUnknownParameterType"= "warning"
+# "reportUnknownLambdaType"= "warning"
+# "reportMissingTypeArgument"= "warning"
+# "reportInvalidTypeVarUse"= "warning"
+# "reportUnusedImport"= "warning"
+# "reportUnusedClass"= "warning"
+# "reportUnusedFunction"= "warning"
+# "reportUnusedVariable"= "warning"
 
 [build-system]
 requires = ["poetry-core"]
