@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "rxpy-demo"
+version = "0.1.0"
+description = ""
+authors = ["syedtaqi95 <sh13226@my.bristol.ac.uk>"]
+readme = "README.md"
+packages = [{ include = "rxpy_demo" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
