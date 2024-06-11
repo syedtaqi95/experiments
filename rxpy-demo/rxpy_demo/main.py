@@ -1,14 +1,12 @@
 from reactivex import of
+from reactivex import operators as op
 
 
 def main() -> None:
-    source = of("Alpha", "Beta", "Gamma", "Delta", "Epsilon")
-
-    source.subscribe(
-        on_next=lambda i: print(f"Received {i}"),
-        on_error=lambda e: print(f"Error occurred: {e}"),
-        on_completed=lambda: print("Done!"),
-    )
+    of("Alpha", "Beta", "Gamma", "Delta", "Epsilon").pipe(
+        op.map(lambda s: len(s)),
+        op.filter(lambda i: i >= 5),  # noqa: PLR2004
+    ).subscribe(lambda value: print(f"Received {value}"))
 
 
 if __name__ == "__main__":
