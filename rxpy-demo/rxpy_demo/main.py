@@ -1,15 +1,18 @@
 from __future__ import annotations
 
+import asyncio
 import multiprocessing
 import random
 import time
 from threading import current_thread
-from typing import Any, Callable
+from typing import Any, Callable, NamedTuple
 
 import reactivex as rx
 import reactivex.abc as rx_abc
 from reactivex import operators as ops
 from reactivex.scheduler import ThreadPoolScheduler
+from reactivex.scheduler.eventloop import AsyncIOScheduler
+from reactivex.subject import Subject
 
 
 # Chaining operators
@@ -97,10 +100,93 @@ def cpu_concurrency() -> None:
     input("Press Enter key to exit\n")
 
 
+# IO Concurrency
+class EchoItem(NamedTuple):
+    future: asyncio.Future[str]
+    data: str
+
+
+class AsyncioTaskDisposable(rx_abc.DisposableBase):
+    def __init__(self: AsyncioTaskDisposable, task: asyncio.Task) -> None:
+        self.task = task
+
+    def dispose(self: AsyncioTaskDisposable) -> None:
+        if not self.task.done():
+            self.task.cancel()
+
+
+def tcp_server(
+    sink: rx.Observable[EchoItem],
+    loop: asyncio.AbstractEventLoop,
+) -> rx.Observable[EchoItem]:
+    def on_subscribe(
+        observer: rx_abc.ObserverBase[EchoItem],
+        _: rx_abc.SchedulerBase | None,
+    ) -> rx_abc.DisposableBase:
+        async def handle_echo(
+            reader: asyncio.StreamReader,
+            writer: asyncio.StreamWriter,
+        ) -> None:
+            print("new client connected")
+            while True:
+                data = await reader.readline()
+                data = data.decode("utf-8")
+                if not data:
+                    break
+
+                future: asyncio.Future[str] = asyncio.Future()
+                observer.on_next(
+                    EchoItem(
+                        future=future,
+                        data=data,
+                    ),
+                )
+                await future
+                writer.write(future.result().encode("utf-8"))
+
+            print("Close the client socket")
+            writer.close()
+            await writer.wait_closed()
+
+        def on_next(i: EchoItem) -> None:
+            i.future.set_result(i.data)
+
+        print("starting server")
+        server = asyncio.start_server(handle_echo, "127.0.0.1", 8888)
+        task = loop.create_task(server)
+
+        sink.subscribe(
+            on_next=on_next,
+            on_error=observer.on_error,
+            on_completed=observer.on_completed,
+        )
+
+        return AsyncioTaskDisposable(task)
+
+    return rx.create(on_subscribe)
+
+
+def io_concurrency() -> None:
+    loop = asyncio.new_event_loop()
+    proxy = Subject()
+    source = tcp_server(proxy, loop)
+    aio_scheduler = AsyncIOScheduler(loop=loop)
+
+    source.pipe(
+        ops.map(lambda i: i._replace(data=f"echo: {i.data}")),
+        ops.delay(5.0),
+    ).subscribe(proxy, scheduler=aio_scheduler)
+
+    loop.run_forever()
+    print("done")
+    loop.close()
+
+
 def main() -> None:
     # chaining_operators()
     # custom_operator()
-    cpu_concurrency()
+    # cpu_concurrency()
+    io_concurrency()
 
 
 if __name__ == "__main__":

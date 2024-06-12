@@ -12,6 +12,7 @@ main = "rxpy_demo.main:main"
 [tool.poetry.dependencies]
 python = "^3.12"
 reactivex = "^4.0.4"
+asyncio = "^3.4.3"
 
 [tool.ruff]
 select = ["ALL"]
