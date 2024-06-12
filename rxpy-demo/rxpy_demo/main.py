@@ -7,6 +7,7 @@ import reactivex.abc as rx_abc
 from reactivex import operators as ops
 
 
+# Chaining operators
 def length_more_than_5() -> Callable[[rx.Observable[str]], rx.Observable[int]]:
     return rx.compose(
         ops.map(lambda s: len(s)),
@@ -14,6 +15,13 @@ def length_more_than_5() -> Callable[[rx.Observable[str]], rx.Observable[int]]:
     )
 
 
+def chaining_operators() -> None:
+    rx.of("Alpha", "Beta", "Gamma", "Delta", "Epsilon").pipe(
+        length_more_than_5(),
+    ).subscribe(lambda value: print(f"Received {value}"))
+
+
+# Custom operator
 def lowercase() -> Callable[[rx.Observable[str]], rx.Observable[str]]:
     def _lowercase(source: rx.Observable[str]) -> rx.Observable[str]:
         def subscribe(
@@ -35,10 +43,15 @@ def lowercase() -> Callable[[rx.Observable[str]], rx.Observable[str]]:
     return _lowercase
 
 
-def main() -> None:
+def custom_operator() -> None:
     rx.of("Alpha", "Beta", "Gamma", "Delta", "Epsilon").pipe(
         lowercase(),
     ).subscribe(lambda value: print(f"Received {value}"))
+
+
+def main() -> None:
+    # chaining_operators()
+    custom_operator()
 
 
 if __name__ == "__main__":
