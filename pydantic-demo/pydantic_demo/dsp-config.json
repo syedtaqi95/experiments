@@ -1,0 +1,5 @@
+{
+  "service_root": "dsp",
+  "data_stream_name": "scope",
+  "data_stream_message_type": "AnalogueEnvelopeSeries"
+}
