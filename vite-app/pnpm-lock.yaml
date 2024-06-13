@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@syedtaqi95/react-ui-library':
-    specifier: ^0.3.0
-    version: 0.3.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.4.0
+    version: 0.4.0(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -722,8 +722,8 @@ packages:
     dev: true
     optional: true
 
-  /@syedtaqi95/react-ui-library@0.3.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-tpy7hwaKeErzWnUAJXRrJkv7tWQEtHkKl5ottprptk5PUw9fxTUUh/zQZZv3E4Pl8zQHSkJzO9eOLyoUX6CLqQ==, tarball: https://npm.pkg.github.com/download/@syedtaqi95/react-ui-library/0.3.0/b6072667adb7c4eb367cd3a18a6ac393c3d89eed}
+  /@syedtaqi95/react-ui-library@0.4.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-BPtbxrf1v3fOLOHyr6XXrzvonbksKRKcvcHfJwUzVcVqH/sDq0sOyeXw9OL+ePkiRTDk4wuBvKPFjWXQctLOig==, tarball: https://npm.pkg.github.com/download/@syedtaqi95/react-ui-library/0.4.0/6f0bb0ae279aafd6068d7dff31f578b3f8c8a11c}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0

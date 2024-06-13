@@ -1,7 +1,7 @@
 {
   "name": "@syedtaqi95/react-ui-library",
   "private": false,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,8 +17,14 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/react-ui-library.es.js",
-      "require": "./dist/react-ui-library.umd.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/react-ui-library.es.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/react-ui-library.umd.js"
+      }
     },
     "./dist/style.css": "./dist/style.css"
   },

@@ -16,13 +16,11 @@ export default defineConfig((configEnv) => ({
       include: ['./src}/**/*.{ts,tsx}'],
       linters: [new EsLinter({ configEnv })],
     }),
-    dts({
-      include: ['src/components/'],
-    }),
+    dts(),
   ],
   build: {
     lib: {
-      entry: resolve('src', 'components/index.ts'),
+      entry: resolve(__dirname, 'src/components/index.ts'),
       name: '@syedtaqi95/react-ui-library',
       formats: ['es', 'umd'],
       fileName: (format) => `react-ui-library.${format}.js`,
