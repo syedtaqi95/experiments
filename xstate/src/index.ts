@@ -33,7 +33,9 @@ function main(): void {
   });
 
   // Create actor that you can send events to
-  const actor = createActor(toggleMachine, { input: { maxCount: 10 } });
+  const actor = createActor(toggleMachine, {
+    input: { maxCount: 10 },
+  });
 
   // Subscribe to snapshots (emitted state changes) from the actor
   actor.subscribe((snapshot) => {
@@ -45,8 +47,18 @@ function main(): void {
   console.log("Started actor");
 
   // Send events
-  actor.send({ type: "toggle" }); // Logs Active
-  actor.send({ type: "toggle" }); // Logs Inactive
+  setInterval(() => {
+    actor.send({ type: "toggle" });
+  }, 3000);
+
+  process.on("SIGINT", () => {
+    console.log("Got SIGINT, gracefully shutting down");
+    try {
+      actor.stop();
+    } finally {
+      process.exit();
+    }
+  });
 }
 
 main();
