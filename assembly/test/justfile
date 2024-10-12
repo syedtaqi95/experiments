@@ -1,0 +1,8 @@
+as:
+  as -o test.o test.s
+
+ld: as
+  ld -o test test.o
+
+run: ld
+  ./test
