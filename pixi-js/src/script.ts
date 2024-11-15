@@ -1,3 +1,10 @@
+// TypeScript declaration for the global PIXI object
+declare global {
+  const PIXI: typeof import("pixi.js");
+}
+
+export { };
+
 async function main() {
   // Create a new application
   const app = new PIXI.Application();
@@ -16,7 +23,8 @@ async function main() {
   // Add sprite to canvas
   await PIXI.Assets.load("sample.png");
 
-  const sprites = [];
+  // @ts-ignore
+  const sprites: PIXI.Sprite[] = [];
   let parent = container;
   for (let i = 0; i < 3; i++) {
     let wrapper = new PIXI.Container();
@@ -47,4 +55,4 @@ async function main() {
   });
 }
 
-await main();
+main();
