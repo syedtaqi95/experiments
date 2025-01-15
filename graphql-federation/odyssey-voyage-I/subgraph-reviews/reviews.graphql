@@ -12,6 +12,16 @@ type Review {
   comment: String
   "A number from 1 - 5 with 1 being lowest and 5 being highest"
   rating: Int
+  "The location the review is about"
+  location: Location
+}
+
+type Location @key(fields: "id") {
+  id: ID!
+  "The calculated overall rating based on all reviews"
+  overallRating: Float
+  "All submitted reviews about this location"
+  reviewsForLocation: [Review]!
 }
 
 type Mutation {
@@ -36,8 +46,4 @@ type SubmitReviewResponse {
   message: String!
   "Newly created review"
   locationReview: Review
-}
-
-type Location @key(fields: "id", resolvable: false) {
-  id: ID!
 }

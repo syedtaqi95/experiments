@@ -11,3 +11,7 @@ headers:
     request:
       - propagate:
           matching: .*
+
+cors:
+  origins:
+    - http://localhost:3000
