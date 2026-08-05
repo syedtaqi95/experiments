@@ -1,0 +1,21 @@
+{
+  "name": "bmi-mcp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.ts",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "check": "tsc"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/inspector": "latest",
+    "@types/node": "^26.1.2",
+    "tsx": "^4.23.7",
+    "typescript": "6"
+  }
+}
